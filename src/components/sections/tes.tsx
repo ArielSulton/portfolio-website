@@ -106,6 +106,12 @@ export default function Projects() {
     })
   }
 
+  const filteredProjects = filterUniqueProjects(
+    activeCategory === 'ALL' 
+      ? projects 
+      : projects.filter(project => project.category === activeCategory)
+  )
+
   const getVisibleProjects = () => {
     const count = getVisibleCount()
     const visibleProjects = []
@@ -119,26 +125,7 @@ export default function Projects() {
     return visibleProjects
   }
 
-  const getGridClassName = (visibleProjectsCount) => {
-    if (!isLargeScreen) return 'grid grid-cols-1'
-    
-    switch (visibleProjectsCount) {
-      case 1:
-        return 'grid grid-cols-1 max-w-[320px] mx-auto'
-      case 2:
-        return 'grid lg:grid-cols-2 grid-cols-1 gap-6 max-w-[664px] mx-auto' // 320px * 2 + 24px gap
-      default:
-        return 'grid lg:grid-cols-3 grid-cols-1 gap-6'
-    }
-  }
-
-  const filteredProjects = filterUniqueProjects(
-    activeCategory === 'ALL' 
-      ? projects 
-      : projects.filter(project => project.category === activeCategory)
-  )
-
-  const visibleProjects = getVisibleProjects()
+  
 
   return (
     <Section id="projects" className="bg-zinc-900 relative">
@@ -158,8 +145,8 @@ export default function Projects() {
               }}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 activeCategory === category
-                  ? 'bg-gradient-to-r from-purple-500 to-red-500 text-white'
-                  : 'bg-zinc-800 hover:bg-zinc-700 text-gray-400'
+                  ? 'bg-purple-500 text-white'
+                  : 'bg-zinc-800 text-gray-400 hover:bg-zinc-700'
               }`}
             >
               {category}
@@ -186,9 +173,9 @@ export default function Projects() {
           </button>
 
           {/* Projects Grid */}
-          <div className={getGridClassName(visibleProjects.length)}>
-            {visibleProjects.map((project, index) => (
-              <div key={index} className="group relative p-[1px] rounded-xl min-h-[320px] w-full max-w-[320px] shadow-lg transition-all duration-300 bg-gradient-to-r from-purple-500 to-red-500">
+          <div className="grid lg:grid-cols-3 grid-cols-1 gap-6 justify-items-center">
+            {getVisibleProjects().map((project, index) => (
+              <div key={index} className="group relative p-[1px] rounded-xl min-h-[320px] w-full max-w-[320px] lg:max-w-full shadow-lg transition-all duration-300 bg-gradient-to-r from-purple-500 to-red-500">
                 <div className="bg-zinc-900 p-6 rounded-xl h-full w-full flex flex-col">
                   <a
                     href={project.link}

@@ -6,6 +6,7 @@ import { Github, Linkedin, Instagram, Mail } from 'lucide-react'
 import Picture from '@public/s-avatar.png'
 import Container from '../ui/Container'
 import Section from '../ui/Section'
+import GradientButton from '../ui/GradientButton'
 
 export default function Hero() {
   const roles = [
@@ -46,7 +47,7 @@ export default function Hero() {
     <Section id="home" className="bg-black" includeNavbar={false}>
       <Container>
         <div className="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-3 h-screen">
-          <div className="flex flex-col justify-center items-center lg:items-start p-8 lg:p-0 text-white row-start-1 lg:col-start-1">
+          <div className="flex flex-col justify-center items-center lg:items-start p-8 lg:p-0 row-start-1 lg:col-start-1 text-white">
             <p className="text-gray-400 text-center mb-2 lg:mb-4">Hi There!</p>
             <h1 className="text-3xl lg:text-4xl font-bold mb-2 lg:mb-4">I&apos;m Ariel Sulton</h1>
             <p className="mb-4 lg:mb-6">
@@ -66,6 +67,7 @@ export default function Hero() {
                 className="bg-gradient-to-r from-purple-500 to-red-500 bg-clip-text text-transparent"
               />
             </p>
+
             <div className="flex space-x-4">
               {socialLinks.map(({ Icon, href, ariaLabel }) => (
                 <a
@@ -80,15 +82,12 @@ export default function Hero() {
                 </a>
               ))}
             </div>
-            <button 
-              onClick={scrollToAbout}
-              className="relative px-4 py-2 text-sm rounded-full text-white transition-all duration-300 ease-in-out group"
-            >
-              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-red-500 opacity-100 transition-opacity duration-300"></span>
-              <span className="absolute inset-[2px] bg-black rounded-full"></span>
-              <span className="relative z-10">About Me</span>
-            </button>
+
+            <GradientButton className='relative px-4 py-2' classSpanName='bg-black' onClick={scrollToAbout}>
+              About Me
+            </GradientButton>
           </div>
+
           <div className="flex justify-center items-end row-start-2 lg:row-start-1 lg:col-span-2 pt-0 lg:pt-24">
             <Image
               src={Picture}
