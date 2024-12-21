@@ -7,6 +7,16 @@ import Container from '../ui/Container'
 import Section from '../ui/Section'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
+interface Project {
+  title: string
+  date: string
+  image: string
+  link: string
+  technologies: string[]
+  description: string
+  category: string
+}
+
 export default function Projects() {
   const [startIndex, setStartIndex] = useState(0)
   const [isLargeScreen, setIsLargeScreen] = useState(false)
@@ -97,9 +107,9 @@ export default function Projects() {
     return visibleCount
   }
 
-  const filterUniqueProjects = (projects) => {
-    const seen = new Set()
-    return projects.filter(project => {
+  const filterUniqueProjects = (projects: Project[]): Project[] => {
+    const seen = new Set<string>()
+    return projects.filter((project: Project) => {
       if (seen.has(project.title)) return false
       seen.add(project.title)
       return true
@@ -119,7 +129,7 @@ export default function Projects() {
     return visibleProjects
   }
 
-  const getGridClassName = (visibleProjectsCount) => {
+  const getGridClassName = (visibleProjectsCount: number): string => {
     if (!isLargeScreen) return 'grid grid-cols-1'
     
     switch (visibleProjectsCount) {
