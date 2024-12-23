@@ -1,16 +1,12 @@
 'use client'
 
+import type { ChatMessage } from '@/types'
 import { useState } from 'react'
 import { Bot } from 'lucide-react'
-import Dialog from './ui/Dialog'
-import ChatWindow from './chatbot/ChatWindow'
+import Dialog from '../ui/Dialog'
+import ChatWindow from '../chatbot/ChatWindow'
 
-interface ChatMessage {
-  text: string
-  isUser: boolean
-}
-
-export default function AIChatbot() {
+export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<ChatMessage[]>([])
 

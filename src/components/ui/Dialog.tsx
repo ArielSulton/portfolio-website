@@ -1,16 +1,15 @@
 'use client'
 
+import type { DialogProps } from '@/types'
 import { Fragment } from 'react'
 import { Dialog as HeadlessDialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
-interface DialogProps {
-  isOpen: boolean
-  onClose: () => void
-  children: React.ReactNode
-}
-
-export default function Dialog({ isOpen, onClose, children }: DialogProps) {
+export default function Dialog({ 
+  isOpen, 
+  onClose, 
+  children 
+}: DialogProps) {
   return (
     <Transition show={isOpen} as={Fragment}>
       <HeadlessDialog onClose={() => {}} className="fixed inset-0 z-50 overflow-y-auto">

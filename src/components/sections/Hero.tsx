@@ -2,42 +2,13 @@
 
 import Image from 'next/image'
 import { TypeAnimation } from 'react-type-animation'
-import { Github, Linkedin, Instagram, Mail } from 'lucide-react'
 import Picture from '@public/s-avatar.png'
 import Container from '../ui/Container'
 import Section from '../ui/Section'
-import GradientButton from '../ui/GradientButton'
+import { GradientButton } from '../ui/Button'
+import { roles, socialLinks } from '@/data'
 
 export default function Hero() {
-  const roles = [
-    'Data Science Student',
-    'Computer Vision Engineer',
-    'Frontend Developer'
-  ]
-
-  const socialLinks = [
-    { 
-      Icon: Github, 
-      href: "https://github.com/ArielSulton",
-      ariaLabel: "GitHub Profile"
-    },
-    { 
-      Icon: Linkedin, 
-      href: "https://linkedin.com/in/arielsulton",
-      ariaLabel: "LinkedIn Profile"
-    },
-    { 
-      Icon: Instagram, 
-      href: "https://instagram.com/arielsulton",
-      ariaLabel: "Instagram Profile"
-    },
-    { 
-      Icon: Mail, 
-      href: "mailto:arielsulton26@gmail.com",
-      ariaLabel: "Send Email"
-    }
-  ]
-
   const scrollToAbout = () => {
     const aboutSection = document.querySelector('#about')
     aboutSection?.scrollIntoView({ behavior: 'smooth' })
@@ -83,9 +54,12 @@ export default function Hero() {
               ))}
             </div>
 
-            <GradientButton className='relative px-4 py-2' classSpanName='bg-black' onClick={scrollToAbout}>
-              About Me
-            </GradientButton>
+            <GradientButton 
+              content='About Me' 
+              onClick={scrollToAbout} 
+              className='relative px-4 py-2' 
+              classSpanName='bg-black' 
+            />
           </div>
 
           <div className="flex justify-center items-end row-start-2 lg:row-start-1 lg:col-span-2 pt-0 lg:pt-24">

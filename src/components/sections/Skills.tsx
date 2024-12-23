@@ -1,81 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Code, Box, Database, FileCode, FileType2, Palette, Boxes, Server, Brain, Cloud, Terminal, GitBranch, Settings, Camera, BarChart, Globe, ChevronLeft, ChevronRight } from 'lucide-react'
 import Container from '../ui/Container'
 import Section from '../ui/Section'
+import Title from '../ui/Title'
+import Card from '../ui/Card'
+import { NavButton } from '../ui/Button'
+import { categories } from '@/data'
 
 export default function Skills() {
   const [startIndex, setStartIndex] = useState(0)
   const [isLargeScreen, setIsLargeScreen] = useState(false)
-
-  const categories = [
-    {
-      key: 'frontend',
-      name: 'Frontend',
-      skills: [
-        { name: 'React JS', icon: Code },
-        { name: 'Redux', icon: Database },
-        { name: 'Next JS', icon: Boxes },
-        { name: 'HTML', icon: FileCode },
-        { name: 'CSS', icon: Palette },
-        { name: 'JavaScript', icon: FileType2 },
-        { name: 'Bootstrap', icon: Box },
-        { name: 'Material UI', icon: Palette },
-        { name: 'Flutter', icon: Code },
-      ]
-    },
-    {
-      key: 'backend',
-      name: 'Backend',
-      skills: [
-        { name: 'Node.js', icon: Server },
-        { name: 'Express', icon: Box },
-        { name: 'PostgreSQL', icon: Database },
-        { name: 'MongoDB', icon: Database },
-        { name: 'Python', icon: Code },
-        { name: 'Django', icon: Box },
-        { name: 'GraphQL', icon: GitBranch },
-        { name: 'REST API', icon: Cloud },
-      ]
-    },
-    {
-      key: 'data_science',
-      name: 'Data Science',
-      skills: [
-        { name: 'Python', icon: Code },
-        { name: 'Pandas', icon: BarChart },
-        { name: 'NumPy', icon: Brain },
-        { name: 'TensorFlow', icon: Brain },
-        { name: 'Scikit-learn', icon: Brain },
-        { name: 'Jupyter', icon: FileCode },
-        { name: 'R', icon: BarChart },
-      ]
-    },
-    {
-      key: 'computer_vision',
-      name: 'Computer Vision',
-      skills: [
-        { name: 'OpenCV', icon: Camera },
-        { name: 'PyTorch', icon: Brain },
-        { name: 'TensorFlow', icon: Brain },
-        { name: 'Image', icon: Camera },
-        { name: 'Deep Learning', icon: Brain },
-      ]
-    },
-    {
-      key: 'other',
-      name: 'Others',
-      skills: [
-        { name: 'Git', icon: GitBranch },
-        { name: 'Docker', icon: Box },
-        { name: 'Linux', icon: Terminal },
-        { name: 'AWS', icon: Cloud },
-        { name: 'CI/CD', icon: Settings },
-        { name: 'Agile', icon: Globe },
-      ]
-    }
-  ]
 
   useEffect(() => {
     const handleResize = () => setIsLargeScreen(window.innerWidth >= 1024)
@@ -115,48 +50,34 @@ export default function Skills() {
 
   return (
     <Section id="skills" className="bg-black relative">
-      <div className="absolute top-8 lg:top-16 mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <h2 className='mb-2 lg:mb-4 text-3xl font-bold text-center text-white'>SKILLS</h2>
-        <p className='text-center text-gray-400'>Here are some of my skills on which I have studied and practiced for the past 2 years</p>
-      </div>
+      <Title 
+        title='SKILLS'
+        description='Here are some of my skills on which I have studied and practiced for the past 2 years'
+      />
       
       <Container className="pt-16 lg:pt-24">
         <div className="relative px-12">
-          {/* Navigation Buttons */}
-          <button
-            onClick={handlePrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-zinc-800/50 p-2 rounded-full hover:bg-zinc-700/50 transition-colors"
-            aria-label="Previous categories"
-          >
-            <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
+          <NavButton 
+            handlePrevious={handlePrevious} 
+            handleNext={handleNext} 
+          />
 
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-zinc-800/50 p-2 rounded-full hover:bg-zinc-700/50 transition-colors"
-            aria-label="Next categories"
-          >
-            <ChevronRight className="w-6 h-6 text-white" />
-          </button>
-
-          {/* Categories Grid */}
+          {/* Skill Categories Grid */}
           <div className="grid lg:grid-cols-3 grid-cols-1 gap-6 justify-items-center">
             {getVisibleCategories().map((category, index) => (
-              <div key={index} className="group relative p-[1px] rounded-xl min-h-[320px] w-full max-w-[320px] shadow-lg transition-all duration-300 bg-gradient-to-r from-purple-500 to-red-500">
-                <div className="bg-black p-6 rounded-xl h-full w-full flex flex-col">
-                  <h3 className="text-xl font-bold text-white mb-6 text-center border-b border-zinc-700 pb-4">
-                    {category.name}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-3 flex-grow content-start lg:grid-cols-none lg:flex lg:flex-wrap lg:justify-center">
-                    {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-black transition-all border border-zinc-700 hover:scale-105 cursor-pointer">
-                        <skill.icon className="w-4 h-4 text-gray-400" />
-                        <span className="text-sm font-medium text-gray-400 truncate lg:overflow-visible lg:text-clip lg:whitespace-normal">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
+              <Card key={index} className="bg-black">
+                <h3 className="text-xl font-bold text-white mb-6 text-center border-b border-zinc-700 pb-4">
+                  {category.name}
+                </h3>
+                <div className="grid grid-cols-2 gap-3 flex-grow content-start lg:grid-cols-none lg:flex lg:flex-wrap lg:justify-center">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skillIndex} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-black transition-all border border-zinc-700 hover:scale-105 cursor-pointer">
+                      <skill.icon className="w-4 h-4 text-gray-400" />
+                      <span className="text-sm font-medium text-gray-400 truncate lg:overflow-visible lg:text-clip lg:whitespace-normal">{skill.name}</span>
+                    </div>
+                  ))}
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
 

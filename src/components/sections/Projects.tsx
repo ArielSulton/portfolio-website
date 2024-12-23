@@ -1,83 +1,20 @@
 'use client'
 
+import type { Project } from '@/types'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Picture from '@public/test.jpeg'
 import Container from '../ui/Container'
 import Section from '../ui/Section'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-
-interface Project {
-  title: string
-  date: string
-  image: string
-  link: string
-  technologies: string[]
-  description: string
-  category: string
-}
+import Title from '../ui/Title'
+import Card from '../ui/Card'
+import { NavButton } from '../ui/Button'
+import { projects } from '@/data'
 
 export default function Projects() {
   const [startIndex, setStartIndex] = useState(0)
   const [isLargeScreen, setIsLargeScreen] = useState(false)
   const [activeCategory, setActiveCategory] = useState('ALL')
-
-  const projects = [
-    {
-      title: 'E-commerce Platform',
-      date: 'December 2023',
-      image: '/project1.jpg',
-      link: 'https://github.com/ArielSulton/',
-      technologies: ['React', 'Next.js', 'Tailwind CSS', 'Node.js'],
-      description: 'E-commerce platform with real-time inventory management and payment integration',
-      category: 'WEB'
-    },
-    {
-      title: 'Real-time Chat App',
-      date: 'November 2023',
-      image: '/project2.jpg',
-      link: 'https://github.com/ArielSulton/',
-      technologies: ['Vue.js', 'Express', 'MongoDB', 'Socket.IO'],
-      description: 'Real-time chat application with group messaging and file sharing capabilities',
-      category: 'WEB'
-    },
-    {
-      title: 'Delivery Tracking',
-      date: 'October 2023',
-      image: '/project3.jpg',
-      link: 'https://github.com/ArielSulton/',
-      technologies: ['React Native', 'Firebase', 'Redux', 'Maps API'],
-      description: 'Mobile delivery tracking app with real-time location updates',
-      category: 'WEB'
-    },
-    {
-      title: 'ERP System',
-      date: 'September 2023',
-      image: '/project4.jpg',
-      link: 'https://github.com/ArielSulton/',
-      technologies: ['Angular', 'TypeScript', 'NestJS', 'PostgreSQL'],
-      description: 'Enterprise resource planning system for inventory management',
-      category: 'DS'
-    },
-    {
-      title: 'Document Management',
-      date: 'August 2023',
-      image: '/project5.jpg',
-      link: 'https://github.com/ArielSulton/',
-      technologies: ['Django', 'React', 'AWS', 'Docker'],
-      description: 'Cloud-based document management system with OCR capabilities',
-      category: 'ML'
-    },
-    {
-      title: 'Fitness Tracker',
-      date: 'July 2023',
-      image: '/project6.jpg',
-      link: 'https://github.com/ArielSulton/',
-      technologies: ['Flutter', 'Firebase', 'GetX', 'ML Kit'],
-      description: 'Cross-platform fitness tracking app with ML-powered pose detection',
-      category: 'ML'
-    }
-  ]
 
   useEffect(() => {
     const handleResize = () => setIsLargeScreen(window.innerWidth >= 1024)
@@ -136,7 +73,7 @@ export default function Projects() {
       case 1:
         return 'grid grid-cols-1 max-w-[320px] mx-auto'
       case 2:
-        return 'grid lg:grid-cols-2 grid-cols-1 gap-6 max-w-[664px] mx-auto' // 320px * 2 + 24px gap
+        return 'grid lg:grid-cols-2 grid-cols-1 gap-6 max-w-[664px] mx-auto' // (320px * 2 + 24px gap)
       default:
         return 'grid lg:grid-cols-3 grid-cols-1 gap-6'
     }
@@ -152,10 +89,10 @@ export default function Projects() {
 
   return (
     <Section id="projects" className="bg-zinc-900 relative">
-      <div className="absolute top-8 lg:top-16 w-full px-4 sm:px-6 lg:px-8 z-10">
-        <h2 className="mb-2 lg:mb-4 text-3xl font-bold text-center text-white">PROJECTS</h2>
-        <p className="text-center text-gray-400">Here are some of my projects that showcase various technologies and solutions</p>
-      </div>
+      <Title 
+        title='PROJECTS'
+        description='I have develop some projects that showcase various technologies and solutions'
+      />
 
       <Container className="pt-16 lg:pt-24">
         <div className="mb-6 flex justify-center gap-4">
@@ -178,59 +115,45 @@ export default function Projects() {
         </div>
 
         <div className="relative px-12">
-          {/* Navigation Buttons */}
-          <button
-            onClick={handlePrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-zinc-800/50 p-2 rounded-full hover:bg-zinc-700/50 transition-colors"
-            aria-label="Previous projects"
-          >
-            <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
-
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-zinc-800/50 p-2 rounded-full hover:bg-zinc-700/50 transition-colors"
-            aria-label="Next projects"
-          >
-            <ChevronRight className="w-6 h-6 text-white" />
-          </button>
+          <NavButton 
+            handlePrevious={handlePrevious} 
+            handleNext={handleNext} 
+          />
 
           {/* Projects Grid */}
           <div className={getGridClassName(visibleProjects.length)}>
             {visibleProjects.map((project, index) => (
-              <div key={index} className="group relative p-[1px] rounded-xl min-h-[320px] w-full max-w-[320px] shadow-lg transition-all duration-300 bg-gradient-to-r from-purple-500 to-red-500">
-                <div className="bg-zinc-900 p-6 rounded-xl h-full w-full flex flex-col">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative w-full aspect-[16/9] bg-zinc-900 mb-4"
-                  >
-                    <Image
-                      src={Picture}
-                      alt="Project preview"
-                      className="w-full h-full object-cover rounded-lg transition-all hover:scale-[1.025] cursor-pointer"
-                    />
-                  </a>
+              <Card key={index} className="bg-zinc-900">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative w-full aspect-[16/9] bg-zinc-900 mb-4"
+                >
+                  <Image
+                    src={Picture}
+                    alt="Project preview"
+                    className="w-full h-full object-cover rounded-lg transition-all hover:scale-[1.025] cursor-pointer"
+                  />
+                </a>
 
-                  <div className="flex flex-wrap gap-2 content-start">
-                    {project.technologies.map((tech, techIndex) => (
-                      <div 
-                        key={techIndex} 
-                        className="flex items-center gap-1 px-2 py-1 rounded-lg bg-zinc-700/50 transition-all hover:scale-105 cursor-pointer"
-                      >
-                        <span className="text-xs font-medium text-white">{tech}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="mt-4 border-t border-zinc-700 pt-2">
-                    <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-                    <p className="mb-2 text-sm text-gray-500">{project.date}</p>
-                    <p className="text-gray-400 text-sm">{project.description}</p>
-                  </div>
+                <div className="flex flex-wrap gap-2 content-start">
+                  {project.technologies.map((tech, techIndex) => (
+                    <div 
+                      key={techIndex} 
+                      className="flex items-center gap-1 px-2 py-1 rounded-lg bg-zinc-700/50 transition-all hover:scale-105 cursor-pointer"
+                    >
+                      <span className="text-xs font-medium text-white">{tech}</span>
+                    </div>
+                  ))}
                 </div>
-              </div>
+                
+                <div className="mt-4 border-t border-zinc-700 pt-2">
+                  <h3 className="text-lg font-semibold text-white">{project.title}</h3>
+                  <p className="mb-2 text-sm text-gray-500">{project.date}</p>
+                  <p className="text-gray-400 text-sm">{project.description}</p>
+                </div>
+              </Card>
             ))}
           </div>
           
