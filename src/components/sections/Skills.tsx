@@ -69,11 +69,11 @@ export default function Skills() {
                 <h3 className="text-xl font-bold text-white mb-6 text-center border-b border-zinc-700 pb-4">
                   {category.name}
                 </h3>
-                <div className="grid grid-cols-2 gap-3 flex-grow content-start lg:grid-cols-none lg:flex lg:flex-wrap lg:justify-center">
+                <div className="grid grid-cols-2 gap-3 flex-grow content-start md:grid-cols-none md:flex md:flex-wrap md:justify-center">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skillIndex} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-black transition-all border border-zinc-700 hover:scale-105 cursor-pointer">
                       <skill.icon className="w-4 h-4 text-gray-400" />
-                      <span className="text-sm font-medium text-gray-400 truncate lg:overflow-visible lg:text-clip lg:whitespace-normal">{skill.name}</span>
+                      <span className="text-sm font-medium text-gray-400 truncate md:overflow-visible md:text-clip md:whitespace-normal">{skill.name}</span>
                     </div>
                   ))}
                 </div>

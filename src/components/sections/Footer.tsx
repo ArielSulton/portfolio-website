@@ -6,7 +6,6 @@ export default function Footer() {
     <footer className="bg-black text-gray-400 py-8">
       <Container>
         <div className="text-center">
-          {/* Tengahkan logo social links */}
           <div className="flex justify-center space-x-4 items-center mb-6">
             {socialLinks.map(({ Icon, href, ariaLabel }) => (
               <a
@@ -21,8 +20,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-
-          {/* Perkecil teks copyright */}
+          
           <p className="text-sm">&copy; {new Date().getFullYear()} Ariel Sulton. All rights reserved.</p>
         </div>
       </Container>

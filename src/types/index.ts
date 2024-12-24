@@ -1,5 +1,17 @@
 import { ReactNode } from 'react'
 
+{/* @/app/api/chatbot */}
+
+export type ChatMessage = {
+  message: string
+}
+
+export type ChatResponse = {
+  response: string
+  error?: string
+  source?: 'custom' | 'ai'
+}
+
 {/* @/components/sections */}
 
 export interface Project {
@@ -12,9 +24,10 @@ export interface Project {
   category: string
 }
 
-export interface ChatMessage {
-  text: string
-  isUser: boolean
+export interface Message {
+  id: string;
+  role: 'user' | 'assistant' | 'error';
+  content: string;
 }
 
 {/* @/components/ui */}
@@ -29,12 +42,6 @@ export interface SectionProps {
 export interface ContainerProps {
   children: ReactNode
   className?: string
-}
-
-export interface DialogProps {
-  isOpen: boolean
-  onClose: () => void
-  children: ReactNode
 }
 
 export interface TitleProps {

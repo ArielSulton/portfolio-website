@@ -1,6 +1,7 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
+import { motion } from 'framer-motion';
 import { Mail, User, MessageSquare } from 'lucide-react'
 import Container from '../ui/Container'
 import Section from '../ui/Section'
@@ -69,7 +70,7 @@ export default function Contact() {
     <Section id="contact" className="bg-black relative">
       <Title 
         title="CONTACT"
-        description="Let's connect and feel free to reach me out"
+        description="Let's connect and feel free to reach out to me"
       />
 
       <Container className="pt-16 lg:pt-24">
@@ -85,9 +86,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your Name"
-                className="w-full pl-11 pr-4 py-3.5 rounded-lg border border-zinc-700 bg-zinc-900/80 
-                          text-white placeholder-zinc-500 focus:border-white focus:ring-1 
-                          focus:ring-white transition-all duration-200"
+                className="w-full pl-11 pr-4 py-3.5 rounded-lg border border-zinc-700 bg-zinc-900/80 text-white placeholder-zinc-500 focus:border-white focus:ring-1 focus:ring-white transition-all duration-200"
                 required
               />
             </div>
@@ -102,9 +101,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Your Email"
-                className="w-full pl-11 pr-4 py-3.5 rounded-lg border border-zinc-700 bg-zinc-900/80 
-                          text-white placeholder-zinc-500 focus:border-white focus:ring-1 
-                          focus:ring-white transition-all duration-200"
+                className="w-full pl-11 pr-4 py-3.5 rounded-lg border border-zinc-700 bg-zinc-900/80 text-white placeholder-zinc-500 focus:border-white focus:ring-1 focus:ring-white transition-all duration-200"
                 required
               />
             </div>
@@ -119,25 +116,22 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Your Message"
                 rows={5}
-                className="w-full pl-11 pr-4 py-3.5 rounded-lg border border-zinc-700 bg-zinc-900/80 
-                          text-white placeholder-zinc-500 focus:border-white focus:ring-1 
-                          focus:ring-white transition-all duration-200 resize-none"
+                className="w-full pl-11 pr-4 py-3.5 rounded-lg border border-zinc-700 bg-zinc-900/80 text-white placeholder-zinc-500 focus:border-white focus:ring-1 focus:ring-white transition-all duration-200 resize-none"
                 required
               />
             </div>
 
             <div className="relative w-full">
-              <button
+              <motion.button
                 type="submit"
-                className={`${buttonState.color} w-full text-white py-3.5 
-                          rounded-lg font-medium hover:opacity-90 active:opacity-80 
-                          transform hover:-translate-y-0.5 transition-all duration-200 
-                          focus:outline-none focus:ring-2 focus:ring-white 
-                          focus:ring-offset-2 focus:ring-offset-black`}
+                className="relative group w-full text-white py-3.5 rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50"
                 disabled={buttonState.disabled}
+                whileHover={{ scale: 1.025 }}
+                whileTap={{ scale: 0.975 }}
               >
-                {buttonState.text}
-              </button>
+                <div className={`${buttonState.color} absolute inset-0 rounded-lg transition-opacity group-hover:opacity-80`}></div>
+                <span className="relative z-10">{buttonState.text}</span>
+              </motion.button>
             </div>
           </form>
         </div>

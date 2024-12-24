@@ -95,23 +95,27 @@ export default function Projects() {
       />
 
       <Container className="pt-16 lg:pt-24">
-        <div className="mb-6 flex justify-center gap-4">
-          {['ALL', 'DS', 'ML', 'WEB'].map(category => (
-            <button
-              key={category}
-              onClick={() => {
-                setActiveCategory(category)
-                setStartIndex(0)
-              }}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                activeCategory === category
-                  ? 'bg-gradient-to-r from-purple-500 to-red-500 text-white'
-                  : 'bg-zinc-800 hover:bg-zinc-700 text-gray-400'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+        <div className="mb-6 flex justify-center">
+          <div className="flex gap-0 overflow-hidden rounded-full bg-zinc-800">
+            {['ALL', 'DS', 'ML', 'WEB'].map((category, index, arr) => (
+              <button
+                key={category}
+                onClick={() => {
+                  setActiveCategory(category)
+                  setStartIndex(0)
+                }}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  activeCategory === category
+                    ? 'bg-gradient-to-r from-purple-500 to-red-500 text-white'
+                    : 'text-gray-400 hover:bg-zinc-700'
+                } ${index === 0 ? 'rounded-l-full' : ''} ${
+                  index === arr.length - 1 ? 'rounded-r-full' : ''
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="relative px-12">

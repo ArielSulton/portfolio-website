@@ -1,6 +1,6 @@
 import { Github, Linkedin, Instagram, Mail, Code, Box, Database, FileCode, FileType2, Palette, Boxes, Server, Brain, Cloud, Terminal, GitBranch, Settings, Camera, BarChart, Globe } from 'lucide-react'
 
-{ /* Hero.tsx */ }
+{ /* @/components/sections/Hero.tsx */ }
 
 export const roles = [
   'Data Science Student',
@@ -31,7 +31,7 @@ export const socialLinks = [
   }
 ]
 
-{ /* Skills.tsx */ }
+{ /* @/components/sections/Skills.tsx */ }
 
 export const categories = [
   {
@@ -101,7 +101,7 @@ export const categories = [
   }
 ]
 
-{ /* Projects.tsx */ }
+{ /* @/components/sections/Projects.tsx */ }
 
 export const projects = [
   {
