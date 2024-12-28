@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { motion } from 'framer-motion';
 import { Mail, User, MessageSquare } from 'lucide-react'
 import Container from '../ui/Container'
@@ -26,7 +26,7 @@ export default function Contact() {
 
     try {
       const formData = new FormData(event.target as HTMLFormElement);
-      formData.append("access_key", "cb86fd9b-b97a-47bf-a509-617b347a9b50");  // arieltree123@gmail.com
+      formData.append("access_key", "ded90cd8-1c57-40da-b14d-8fce200f70f3");  // arielbusinesses123@gmail.com
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -70,11 +70,11 @@ export default function Contact() {
     <Section id="contact" className="bg-black relative">
       <Title 
         title="CONTACT"
-        description="Let's connect and feel free to reach out to me"
+        description="Let's connect and feel free to reach me out"
       />
 
       <Container className="pt-16 lg:pt-24">
-        <div className="p-0.5 rounded-xl bg-gradient-to-r from-purple-500 to-red-500">
+        <div className="p-0.5 w-full max-w-[320px] lg:min-w-[480px] rounded-xl bg-gradient-to-r from-purple-500 to-red-500">
           <form onSubmit={handleSubmit} className="space-y-4 bg-black rounded-xl p-6">
             <div className="relative">
               <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">

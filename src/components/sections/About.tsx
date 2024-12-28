@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { MapPin, Building } from 'lucide-react'
-import Picture from '@public/s-avatar.png'
+import Picture from '@public/avatar/s-color-avatar.png'
 import Container from '../ui/Container'
 import Section from '../ui/Section'
 import Title from '../ui/Title'
@@ -11,7 +11,7 @@ import { GradientButton } from '../ui/Button'
 export default function About() {
   const downloadCV = () => {
     const link = document.createElement('a')
-    link.href = '/cv-ats.pdf'
+    link.href = '/files/cv-ats.pdf'
     link.download = '[CV_ATS]_Mochammad_Ariel_Sulton.pdf'
     link.click()
     link.remove()
@@ -27,7 +27,7 @@ export default function About() {
       <Container className="pt-16 lg:pt-24">
         <div className="grid lg:grid-cols-2 items-center gap-8">
           <div className="flex justify-center">
-            <div className="relative inline-block w-64 lg:w-96">
+            <div className="relative inline-block w-52 md:w-64 lg:w-96">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-red-500 rounded-full opacity-100 transition duration-200"></div>
               <div className="relative bg-zinc-900 rounded-full p-1">
                 <Image

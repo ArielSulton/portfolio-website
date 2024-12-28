@@ -63,17 +63,21 @@ export default function Skills() {
           />
 
           {/* Skill Categories Grid */}
-          <div className="grid lg:grid-cols-3 grid-cols-1 gap-6 justify-items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 justify-items-center">
             {getVisibleCategories().map((category, index) => (
-              <Card key={index} className="bg-black">
-                <h3 className="text-xl font-bold text-white mb-6 text-center border-b border-zinc-700 pb-4">
+              <Card key={index} className="min-h-[320px] bg-black">
+                <h3 className="text-xl font-semibold text-white mb-6 text-center border-b border-zinc-700 pb-4">
                   {category.name}
                 </h3>
-                <div className="grid grid-cols-2 gap-3 flex-grow content-start md:grid-cols-none md:flex md:flex-wrap md:justify-center">
+                <div className="grid grid-cols-2 gap-3 flex-grow content-start justify-center
+                  md:flex md:grid-cols-none md:flex-wrap
+                  lg:grid lg:grid-cols-2 lg:flex-none
+                  xl:flex xl:grid-cols-none xl:flex-wrap"
+                >
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skillIndex} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-black transition-all border border-zinc-700 hover:scale-105 cursor-pointer">
-                      <skill.icon className="w-4 h-4 text-gray-400" />
-                      <span className="text-sm font-medium text-gray-400 truncate md:overflow-visible md:text-clip md:whitespace-normal">{skill.name}</span>
+                      <skill.icon className="w-4 h-4" style={{ color: skill.color }} />
+                      <span className="text-sm font-medium text-gray-400 truncate">{skill.name}</span>
                     </div>
                   ))}
                 </div>

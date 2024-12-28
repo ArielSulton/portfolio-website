@@ -3,7 +3,6 @@
 import type { Project } from '@/types'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Picture from '@public/test.jpeg'
 import Container from '../ui/Container'
 import Section from '../ui/Section'
 import Title from '../ui/Title'
@@ -82,7 +81,7 @@ export default function Projects() {
   const filteredProjects = filterUniqueProjects(
     activeCategory === 'ALL' 
       ? projects 
-      : projects.filter(project => project.category === activeCategory)
+      : projects.filter(project => project.categories.includes(activeCategory))
   )
 
   const visibleProjects = getVisibleProjects()
@@ -91,7 +90,7 @@ export default function Projects() {
     <Section id="projects" className="bg-zinc-900 relative">
       <Title 
         title='PROJECTS'
-        description='I have develop some projects that showcase various technologies and solutions'
+        description='I have developed some projects that showcase various technologies'
       />
 
       <Container className="pt-16 lg:pt-24">
@@ -104,7 +103,7 @@ export default function Projects() {
                   setActiveCategory(category)
                   setStartIndex(0)
                 }}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                className={`px-4 py-2 text-xs font-semibold transition-colors ${
                   activeCategory === category
                     ? 'bg-gradient-to-r from-purple-500 to-red-500 text-white'
                     : 'text-gray-400 hover:bg-zinc-700'
@@ -127,7 +126,7 @@ export default function Projects() {
           {/* Projects Grid */}
           <div className={getGridClassName(visibleProjects.length)}>
             {visibleProjects.map((project, index) => (
-              <Card key={index} className="bg-zinc-900">
+              <Card key={index} className=" bg-zinc-900">
                 <a
                   href={project.link}
                   target="_blank"
@@ -135,7 +134,7 @@ export default function Projects() {
                   className="relative w-full aspect-[16/9] bg-zinc-900 mb-4"
                 >
                   <Image
-                    src={Picture}
+                    src={project.image}
                     alt="Project preview"
                     className="w-full h-full object-cover rounded-lg transition-all hover:scale-[1.025] cursor-pointer"
                   />
@@ -147,7 +146,7 @@ export default function Projects() {
                       key={techIndex} 
                       className="flex items-center gap-1 px-2 py-1 rounded-lg bg-zinc-700/50 transition-all hover:scale-105 cursor-pointer"
                     >
-                      <span className="text-xs font-medium text-white">{tech}</span>
+                      <span className="text-xs text-white">{tech}</span>
                     </div>
                   ))}
                 </div>
@@ -155,7 +154,14 @@ export default function Projects() {
                 <div className="mt-4 border-t border-zinc-700 pt-2">
                   <h3 className="text-lg font-semibold text-white">{project.title}</h3>
                   <p className="mb-2 text-sm text-gray-500">{project.date}</p>
-                  <p className="text-gray-400 text-sm">{project.description}</p>
+                  <p className="hidden md:flex text-gray-400 text-sm">{project.description}</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {project.categories.map((category, catIndex) => (
+                      <span key={catIndex} className="text-xs text-gray-400 bg-zinc-800 px-2 py-1 rounded">
+                        {category}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </Card>
             ))}

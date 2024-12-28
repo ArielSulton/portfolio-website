@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image'
 import { ReactNode } from 'react'
 
 {/* @/app/api/chatbot */}
@@ -17,11 +18,11 @@ export type ChatResponse = {
 export interface Project {
   title: string
   date: string
-  image: string
+  image: StaticImageData
   link: string
   technologies: string[]
   description: string
-  category: string
+  categories: string[]
 }
 
 export interface Message {

@@ -148,8 +148,8 @@ export default function Chatbot() {
                   ) : (
                     <span className={`inline-block p-2 rounded-lg max-w-[85%] break-words ${
                       m.role === 'assistant' 
-                      ? 'border border-zinc-700 bg-transparent text-white' 
-                      : 'border border-zinc-700 bg-transparent text-red-700'
+                      ? 'border border-zinc-700 bg-zinc-900/80 text-white' 
+                      : 'border border-zinc-700 bg-zinc-900/80 text-red-700'
                     }`}>
                       {m.content}
                     </span>

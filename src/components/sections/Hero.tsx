@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { TypeAnimation } from 'react-type-animation'
-import Picture from '@public/s-avatar.png'
+import Picture from '@public/avatar/s-avatar.png'
 import Container from '../ui/Container'
 import Section from '../ui/Section'
 import { GradientButton } from '../ui/Button'
