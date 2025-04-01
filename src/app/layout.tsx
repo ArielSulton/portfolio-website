@@ -46,6 +46,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Chatbot />
+        <SpeedInsights />
       </body>
     </html>
   )
