@@ -17,8 +17,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/avatar/s-logo.jpg',
-        width: 256,
-        height: 256,
+        width: 512,
+        height: 512,
         alt: 'Logo',
       },
     ],
