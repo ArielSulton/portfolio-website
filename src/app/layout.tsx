@@ -8,25 +8,25 @@ import Chatbot from '@/components/sections/Chatbot'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Ariel Sulton',
+  title: 'Mochammad Ariel Sulton',
   description: 'Personal Portfolio Website',
   openGraph: {
-    title: 'Ariel Sulton',
+    title: 'Mochammad Ariel Sulton',
     description: 'Personal Portfolio Website',
     url: 'https://arielsulton.vercel.com',
     images: [
       {
         url: '/avatar/s-avatar.png',
-        width: 512,
-        height: 512,
+        width: 256,
+        height: 256,
         alt: 'Logo',
       },
     ],
-    siteName: 'Ariel Sulton',
+    siteName: 'Mochammad Ariel Sulton',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ariel Sulton',
+    title: 'Mochammad Ariel Sulton',
     description: 'Personal Portfolio Website',
     images: [
       '/avatar/s-avatar.png',
