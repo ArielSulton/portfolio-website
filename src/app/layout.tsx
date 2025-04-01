@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: 'https://arielsulton.vercel.com',
     images: [
       {
-        url: '/avatar/s-logo.jpg',
+        url: '/avatar/s-logo.png',
         width: 512,
         height: 512,
         alt: 'Logo',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: 'Mochammad Ariel Sulton',
     description: 'Personal Portfolio Website',
     images: [
-      '/avatar/s-logo.jpg',
+      '/avatar/s-logo.png',
     ],
   },
 }
