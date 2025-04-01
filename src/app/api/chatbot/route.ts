@@ -15,7 +15,7 @@ const customResponses = new Map([
   }],
   ['contact', {
     keywords: ['contact', 'email', 'reach', 'connect'],
-    response: 'You can reach me through email at [your-email] or connect with me on LinkedIn at [your-linkedin-profile].'
+    response: 'You can reach me through email at arielbusinesses123@gmail.com or connect with me on LinkedIn.'
   }],
   ['experience', {
     keywords: ['experience', 'work history', 'background'],
